@@ -1,0 +1,23 @@
+server:
+  port: 0
+
+spring:
+  application:
+    name: ms-credit-rater
+  rabbitmq:
+    port: 15672
+    username: guest
+    password: guest
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+  instance:
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+  feign:
+    client:
+      config:
+        default:
+          connectTimeout: 60000
+          readTimeout: 10000
+

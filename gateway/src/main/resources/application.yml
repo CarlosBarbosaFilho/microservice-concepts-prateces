@@ -1,0 +1,40 @@
+---
+server:
+  port: 9080
+spring:
+  application:
+    name: gateway
+  cloud:
+    gateway:
+      routes:
+        - id: ms-customer
+          uri: lb://ms-customer
+          predicates:
+            - Path=/api/v1/customers/**
+            - Method=GET,POST
+        - id: ms-cards
+          uri: lb://ms-cards
+          predicates:
+            - Path=/api/v1/cards/**
+            - Method= GET,POST
+        - id: ms-credit-rater
+          uri: lb://ms-credit-rater
+          predicates:
+            - Path=/api/v1/credit-raters/**
+            - Method= GET,POST
+        - id:  ms-customer-rater-credit
+          uri: lb://ms-customer-rater-credit
+          predicates:
+            - Path=/api/v1/rater-credit-customer/**
+            - Method= GET,POST
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+    register-with-eureka: true
+    fetch-registry: true
+    enabled: true
