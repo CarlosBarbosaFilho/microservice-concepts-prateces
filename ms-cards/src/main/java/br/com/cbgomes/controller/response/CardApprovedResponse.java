@@ -13,7 +13,9 @@ import java.math.BigDecimal;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class CardCustomerResponse {
+public class CardApprovedResponse {
+
+    private Long id;
 
     private String flag;
 
@@ -21,8 +23,10 @@ public class CardCustomerResponse {
 
     private BigDecimal card_limit_customer;
 
-    public static CardCustomerResponse fromCardCustomer(CardCustomer cardCustomer){
-        return CardCustomerResponse.builder()
+
+    public static CardApprovedResponse fromCardCustomer(CardCustomer cardCustomer){
+        return CardApprovedResponse.builder()
+                .id(cardCustomer.getId())
                 .name_card(cardCustomer.getCard().getName())
                 .card_limit_customer(cardCustomer.getCard_limit_customer())
                 .flag(cardCustomer.getCard().getFlag_card().toString()).build();

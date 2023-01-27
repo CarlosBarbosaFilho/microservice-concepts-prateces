@@ -1,6 +1,7 @@
 package br.com.cbgomes.usecase.service;
 
 import br.com.cbgomes.controller.request.CardRequest;
+import br.com.cbgomes.controller.response.CardApprovedResponse;
 import br.com.cbgomes.domain.Card;
 import br.com.cbgomes.infra.repository.CardsRepository;
 import jakarta.ws.rs.NotAuthorizedException;
@@ -10,6 +11,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -31,10 +33,15 @@ public class CardsService {
         );
     }
 
-    public List<Card> cards(Long income) {
+    public List<CardApprovedResponse> cards(Long income) {
         var incomeConvert = BigDecimal.valueOf(income);
-        return this.cardsRepository.findByIncomeLessThanEqual(incomeConvert);
+        List<CardApprovedResponse> cards = new ArrayList<>();
+         return this.cardsRepository.findByIncomeLessThanEqual(incomeConvert)
+                .stream().map(it -> CardApprovedResponse.builder()
+                         .id(it.getId())
+                         .name_card(it.getName())
+                         .flag(it.getFlag_card().name())
+                         .card_limit_customer(it.getCard_limit())
+                         .build()).toList();
     }
-
-
 }

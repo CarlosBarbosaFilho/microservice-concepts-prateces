@@ -1,7 +1,7 @@
 package br.com.cbgomes.usecase.service;
 
 import br.com.cbgomes.controller.request.CardCustomerRequest;
-import br.com.cbgomes.controller.response.CardCustomerResponse;
+import br.com.cbgomes.controller.response.CardApprovedResponse;
 import br.com.cbgomes.domain.CardCustomer;
 import br.com.cbgomes.infra.repository.CardCustomerRepository;
 import br.com.cbgomes.infra.repository.CardsRepository;
@@ -31,10 +31,10 @@ public class CardCustomerService {
                 .build());
     }
 
-    public List<CardCustomerResponse> cardsCustomerDocument(String document) {
+    public List<CardApprovedResponse> cardsCustomerDocument(String document) {
         var cardsCustomer = this.cardCustomerRepository.findByDocument(document);
         return cardsCustomer.stream()
-                .map(CardCustomerResponse::fromCardCustomer)
+                .map(CardApprovedResponse::fromCardCustomer)
                 .collect(Collectors.toList());
     }
 }

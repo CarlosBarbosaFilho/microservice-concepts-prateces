@@ -8,7 +8,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @AllArgsConstructor
@@ -19,6 +21,6 @@ public class CardCustomerController implements CardCustomerApi {
 
     @Override
     public ResponseEntity<List<CardsCustomerResponse>> getCardsCustomer(String document) {
-        return this.iCardCustomerUseCase.getCardsCustomer(document);
+        return ResponseEntity.ok(this.iCardCustomerUseCase.getCardsCustomer(document));
     }
 }

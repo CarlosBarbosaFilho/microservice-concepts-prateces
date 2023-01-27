@@ -1,7 +1,7 @@
 package br.com.cbgomes.adapter.output.feign.service;
 
 import br.com.cbgomes.adapter.input.api.response.CardsCustomerResponse;
-import br.com.cbgomes.adapter.output.feign.CardCustomerClient;
+import br.com.cbgomes.adapter.output.feign.CardCustomerServiceClient;
 import br.com.cbgomes.application.ports.output.ICardClientPort;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -13,13 +13,13 @@ import java.util.List;
 @Service
 @AllArgsConstructor
 @Slf4j
-public class CardServiceClientPort implements ICardClientPort {
+public class CardCustomerServiceClientPort implements ICardClientPort {
 
 
-    private final CardCustomerClient cardCustomerClient;
+    private final CardCustomerServiceClient cardCustomerServiceClient;
 
     @Override
     public ResponseEntity<List<CardsCustomerResponse>> getCard(String document) {
-        return this.cardCustomerClient.cardsCustomer(document);
+        return this.cardCustomerServiceClient.cardsCustomer(document);
     }
 }

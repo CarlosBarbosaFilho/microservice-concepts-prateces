@@ -11,7 +11,7 @@ import java.util.List;
 @Builder
 public class CustomerRepresentationResponse {
 
-    private CustomerData customerData;
+    private CustomerDataResponseClient customerDataResponse;
     private List<CardsCustomerResponse> cards;
 
 }

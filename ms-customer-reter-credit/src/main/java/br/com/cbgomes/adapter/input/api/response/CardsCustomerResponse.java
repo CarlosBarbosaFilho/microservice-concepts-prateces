@@ -24,9 +24,11 @@ public class CardsCustomerResponse {
 
     public CardApprovedResponse toCardApproved(CardsCustomerResponse cardsCustomerResponse) {
         return CardApprovedResponse.builder()
-                .card(cardsCustomerResponse.getName_card())
-                .flag_card(cardsCustomerResponse.getFlag())
-                .approve_limit(cardsCustomerResponse.getCard_limit_customer())
+                .name_card(cardsCustomerResponse.getName_card())
+                .flag(cardsCustomerResponse.getFlag())
+                .card_limit_customer(cardsCustomerResponse.getCard_limit_customer())
                 .build();
     }
+
+
 }

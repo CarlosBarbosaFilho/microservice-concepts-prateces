@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface ICardCustomerUseCase {
 
-    ResponseEntity<List<CardsCustomerResponse>> getCardsCustomer(String document);
+    List<CardsCustomerResponse> getCardsCustomer(String document);
 }

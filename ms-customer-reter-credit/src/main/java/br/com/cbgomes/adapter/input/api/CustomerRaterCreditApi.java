@@ -25,5 +25,5 @@ public interface CustomerRaterCreditApi {
     ResponseEntity<CustomerRepresentationResponse> getCustomer(@RequestParam String document);
 
     @PostMapping("/evaluate-customer")
-    ResponseEntity<EvaluationResultCustomerResponse> carryOutEvaluation(@RequestBody DataEvaluationCustomer dataEvaluationCustomer);
+    EvaluationResultCustomerResponse carryOutEvaluation(@RequestBody DataEvaluationCustomer dataEvaluationCustomer);
 }

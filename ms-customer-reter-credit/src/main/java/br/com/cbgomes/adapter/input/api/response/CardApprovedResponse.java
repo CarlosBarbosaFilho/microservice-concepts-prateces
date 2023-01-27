@@ -13,8 +13,9 @@ import java.math.BigDecimal;
 @Builder
 public class CardApprovedResponse {
 
-    private String card;
-    private String flag_card;
-    private BigDecimal approve_limit;
+    private Long id;
+    private String flag;
+    private String name_card;
+    private BigDecimal card_limit_customer;
 
 }

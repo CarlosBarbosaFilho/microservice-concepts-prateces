@@ -1,5 +1,6 @@
 package br.com.cbgomes.infra.repository;
 
+import br.com.cbgomes.controller.response.CardApprovedResponse;
 import br.com.cbgomes.domain.Card;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
