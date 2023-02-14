@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>br.com.cbgomes</groupId>
 	<artifactId>service-discovery</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 	<name>service-discovery</name>
 	<description>Service discovery to project microservice - concepts and prateces</description>
 	<properties>
@@ -69,6 +69,11 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<image>
+						<name>carlosbarbosafilho/${project.artifactId}:${project.version}</name>
+					</image>
+				</configuration>
 			</plugin>
 			<plugin>
 				<groupId>org.jetbrains.kotlin</groupId>
