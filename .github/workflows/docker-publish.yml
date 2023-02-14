@@ -22,4 +22,5 @@ jobs:
           distribution: 'adopt'
       - name: Create Image - Service Discovery
         working-directory: ./microservice-concepts-prateces/service-discovery
-        run: mvn spring-boot:build-image -DskipTests
+        run:
+         mvn spring-boot:build-image -DskipTests
