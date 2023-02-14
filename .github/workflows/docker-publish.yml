@@ -33,4 +33,7 @@ jobs:
       - name: Docker Compose Build
         working-directory: ./service-discovery
         run: docker-compose build
+        
+      - name: Push to Docker Hub
+        run: docker tag ${{ secrets.DOCKER_USERNAME }}/service-discovery:0.0.1 ${{ secrets.DOCKER_USERNAME }}/service-discovery:${github.run_id{}}
       
