@@ -12,6 +12,7 @@ jobs:
     
     steps:
       - uses: actions/checkout@v2
+      
       - name: Login to dockerhub
         uses: docker/login-action@f4ef78c080cd8ba55a85445d5b36e214a81df20a
         with:
@@ -23,5 +24,7 @@ jobs:
           distribution: 'temurin' # See 'Supported distributions' for available options
           java-version: '17'
       
-        
+      - name: Create Image - Service Discovery
+        working-directory: ./microservice-concepts-prateces/service-discovery
+        run: mvn spring-boot:build-image -DskipTests
       
