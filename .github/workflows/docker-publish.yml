@@ -1,0 +1,30 @@
+---
+name: Continuous Integration with Github
+on:
+  push:
+    branches:
+      - master
+jobs:
+
+  build:
+  
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v2
+      
+      - name: Login to dockerhub
+        uses: docker/login-action@f4ef78c080cd8ba55a85445d5b36e214a81df20a
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+         
+      - uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin' # See 'Supported distributions' for available options
+          java-version: '17'
+      
+      - name: Create Image - Service Discovery
+        working-directory: ./service-discovery
+        run: mvn spring-boot:build-image -DskipTests
+      
