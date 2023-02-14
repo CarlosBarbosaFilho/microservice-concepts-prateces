@@ -26,7 +26,11 @@ jobs:
         working-directory: ./service-discovery
         run: mvn spring-boot:build-image -DskipTests
       
-      - name: Docker Compose - Build
+      - name: Create Image - Service Discovery jar
         working-directory: ./service-discovery
         run: mvn clean package -DskipTests
+        
+      - name: Docker Compose Build
+        working-directory: ./service-discovery
+        run: docker-compose build
       
