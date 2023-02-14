@@ -19,7 +19,3 @@ jobs:
         with:
           java-version: '17'
           distribution: 'adopt'
-          
-      - name: Service Registry - Eureka Server
-        working-directory: ./microservice-concepts-prateces/service-discovery
-        run: mvn spring-boot:build-image -DskipTests
