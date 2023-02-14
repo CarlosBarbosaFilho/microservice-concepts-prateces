@@ -25,6 +25,6 @@ jobs:
           java-version: '17'
       
       - name: Create Image - Service Discovery
-        working-directory: ./microservice-concepts-prateces/service-discovery
+        working-directory: ./service-discovery
         run: mvn spring-boot:build-image -DskipTests
       
