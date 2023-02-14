@@ -21,6 +21,5 @@ jobs:
           distribution: 'adopt'
           
       - name: Service Registry - Eureka Server
-      - uses: actions/setup-java@v3.10.0
-      - working-directory: ./microservice-concepts-prateces/service-discovery
+        working-directory: ./microservice-concepts-prateces/service-discovery
         run: mvn spring-boot:build-image -DskipTests
