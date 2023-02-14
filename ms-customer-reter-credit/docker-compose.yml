@@ -1,0 +1,13 @@
+---
+version: "3.8"
+services:
+  ms-rate-credit-customer:
+    image: ms-rate-credit-customer:0.0.1
+    container_name: ms-rate-credit-customer
+    build: .
+    environment:
+      EUREKA.CLIENT.SERVICEURL.DEFAULTZONE: http://service-registry:8761/eureka/
+networks:
+  default:
+    external:
+      name: issuance-card-customer-network

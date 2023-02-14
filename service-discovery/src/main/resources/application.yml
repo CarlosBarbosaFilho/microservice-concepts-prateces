@@ -4,6 +4,10 @@ spring:
 server:
   port: 8761
 
+  sleuth:
+    sampler:
+      probability: 1.0 #100%
+
 ## Eureka server discovery
 eureka:
   client:

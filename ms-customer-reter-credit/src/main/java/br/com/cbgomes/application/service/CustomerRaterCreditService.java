@@ -1,6 +1,5 @@
 package br.com.cbgomes.application.service;
 
-import br.com.cbgomes.adapter.input.api.response.EvaluationResultCustomerResponse;
 import br.com.cbgomes.application.domain.CustomerRaterCreditDomain;
 import br.com.cbgomes.application.ports.input.ICustomerRaterCreditUseCase;
 import br.com.cbgomes.application.ports.output.ICustomerRaterCreditRepositoryPort;
@@ -14,6 +13,7 @@ import java.util.UUID;
 public class CustomerRaterCreditService implements ICustomerRaterCreditUseCase {
 
     private final ICustomerRaterCreditRepositoryPort iCustomerRaterCreditRepositoryPort;
+
 
     @Override
     public String createCreditCardCustomer(CustomerRaterCreditDomain customerRaterCreditDomain) {
@@ -31,4 +31,5 @@ public class CustomerRaterCreditService implements ICustomerRaterCreditUseCase {
                .getDocument() + customerRaterCreditDomain
                .getId_card() + UUID.randomUUID();
    }
+
 }

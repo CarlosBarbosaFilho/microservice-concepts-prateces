@@ -19,7 +19,7 @@ public class CardCustomerServiceClientPort implements ICardClientPort {
     private final CardCustomerServiceClient cardCustomerServiceClient;
 
     @Override
-    public ResponseEntity<List<CardsCustomerResponse>> getCard(String document) {
+    public ResponseEntity<List<CardsCustomerResponse>> getCards(String document) {
         return this.cardCustomerServiceClient.cardsCustomer(document);
     }
 }

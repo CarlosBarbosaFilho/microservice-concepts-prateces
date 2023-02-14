@@ -2,9 +2,11 @@ package br.com.cbgomes.adapter.input.api;
 
 import br.com.cbgomes.adapter.input.api.request.CustomerRaterCreditRequest;
 import br.com.cbgomes.adapter.input.api.request.DataEvaluationCustomer;
+import br.com.cbgomes.adapter.input.api.request.DataIssuanceCardRequest;
 import br.com.cbgomes.adapter.input.api.response.CreditRaterResponse;
 import br.com.cbgomes.adapter.input.api.response.EvaluationResultCustomerResponse;
 import br.com.cbgomes.adapter.output.feign.response.CustomerRepresentationResponse;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,7 +19,7 @@ public interface CustomerRaterCreditApi {
     String create(@RequestBody CustomerRaterCreditRequest customerRaterCreditRequest);
 
 
-   //@GetMapping (params ="document")
+    //@GetMapping (params ="document")
     ResponseEntity<CreditRaterResponse> customerCreditRater (@RequestParam String document);
 
 
@@ -26,4 +28,7 @@ public interface CustomerRaterCreditApi {
 
     @PostMapping("/evaluate-customer")
     EvaluationResultCustomerResponse carryOutEvaluation(@RequestBody DataEvaluationCustomer dataEvaluationCustomer);
+
+    @PostMapping("/issuance-card")
+    ResponseEntity<String> issuanceCardToCustomer(@RequestBody DataIssuanceCardRequest dataIssuanceCardRequest) throws JsonProcessingException;
 }

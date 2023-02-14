@@ -8,5 +8,4 @@ public interface ICustomerRaterCreditRepositoryPort {
     void createCreditCardCustomer(CustomerRaterCreditDomain customerRaterCreditDomain);
 
     CustomerRaterCreditDomain raterCreditCardCustomer(String document);
-
 }

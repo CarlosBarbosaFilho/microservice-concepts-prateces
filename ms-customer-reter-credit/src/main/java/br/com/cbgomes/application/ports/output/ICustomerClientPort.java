@@ -1,8 +1,9 @@
 package br.com.cbgomes.application.ports.output;
 
 import br.com.cbgomes.adapter.output.feign.response.CustomerDataResponseClient;
+import org.springframework.http.ResponseEntity;
 
 public interface ICustomerClientPort {
 
-    CustomerDataResponseClient getCustomer(String document);
+    ResponseEntity<CustomerDataResponseClient> getCustomer(String document);
 }

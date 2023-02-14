@@ -4,10 +4,63 @@ server:
 spring:
   application:
     name: ms-cards
+  security:
+    basic:
+      enabled: true
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+
+  sleuth:
+    sampler:
+      probability: 1.0
 
 eureka:
   client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
     register-with-eureka: true
     fetch-registry: true
   instance:
     instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+mq:
+  queues:
+    issuance_of_cards: issuance_of_cards
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+          - prometheus
+  tracing:
+    sampling:
+      probability: 1.0
+  metrics:
+    distribution:
+      percentiles-histogram:
+        http:
+          server:
+            requests: true
+
+
+logging:
+    file:
+      name: ./logs/log-file.log
+    pattern:
+      level: "%5p [${spring.application.name:},%X{traceId:-},%X{spanId:-}]"
+
+resilience4j:
+  ratelimiter:
+    instances:
+      default:
+        limitForPeriod: 2
+        limitRefreshPeriod: 10s
+  retry:
+    instances:
+      get-cards:
+        maxAttempts: 5
+        waitDuration: 1s
+        ##enableExponentialBackoff: true

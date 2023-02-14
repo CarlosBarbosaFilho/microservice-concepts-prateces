@@ -10,6 +10,16 @@ spring:
         default:
           connectTimeout: 60000
           readTimeout: 10000
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+
+  sleuth:
+    sampler:
+      probability: 1.0 #100%
+
 eureka:
   client:
     service-url:
@@ -17,3 +27,18 @@ eureka:
     register-with-eureka: true
     fetch-registry: true
     enabled: true
+
+mq:
+  queues:
+    issuance_of_cards: issuance_of_cards
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+          - '*'
+
+logging:
+    file:
+      name: ./logs/log-file.log

@@ -1,0 +1,16 @@
+---
+version: "3.8"
+services:
+  ms-customer:
+    image: ms-customer:0.0.1
+    container_name: ms-customer
+    build: .
+    environment:
+      EUREKA.CLIENT.SERVICEURL.DEFAULTZONE: http://service-registry:8761/eureka/
+    command:
+networks:
+  default:
+    external:
+      name: issuance-card-customer-network
+
+

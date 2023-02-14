@@ -1,0 +1,14 @@
+---
+version: "3.8"
+services:
+  service-registry:
+    image: service-registry:0.0.1
+    container_name: service-registry-eureka
+    build: .
+    hostname: service-registry-eureka
+    ports:
+      - 8761:8761
+networks:
+  default:
+    external:
+      name: issuance-card-customer-network

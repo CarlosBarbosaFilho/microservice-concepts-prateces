@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface ICardClientPort {
 
-    ResponseEntity<List<CardsCustomerResponse>> getCard(String document);
+    ResponseEntity<List<CardsCustomerResponse>> getCards(String document);
 }

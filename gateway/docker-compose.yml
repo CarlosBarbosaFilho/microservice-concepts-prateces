@@ -1,0 +1,13 @@
+---
+version: "3.8"
+services:
+  gateway:
+    image: api-gateway
+    container_name: api-gateway
+    build: .
+    environment:
+      EUREKA.CLIENT.SERVICEURL.DEFAULTZONE: http://service-registry:8761/eureka/
+networks:
+  default:
+    external:
+      name: issuance-card-customer-network

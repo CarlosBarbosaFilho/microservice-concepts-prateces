@@ -4,6 +4,11 @@ server:
 spring:
   application:
     name: gateway
+
+  sleuth:
+    sampler:
+      probability: 1.0
+
   cloud:
     gateway:
       routes:
@@ -34,7 +39,7 @@ spring:
 eureka:
   client:
     service-url:
-      defaultZone: http://localhost:8761/eureka/
+      defaultZone: http://service-registry-eureka:8761/eureka/
     register-with-eureka: true
     fetch-registry: true
     enabled: true

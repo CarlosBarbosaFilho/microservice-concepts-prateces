@@ -23,25 +23,19 @@ public class CardsController {
     private final CardsService cardsService;
     private final CardCustomerService cardCustomerService;
 
-    @GetMapping
-    public String status() {
-        log.info("calling the service of cards");
-        return "calling cards services";
-    }
-
     @PostMapping
     @ResponseStatus( HttpStatus.CREATED)
     public ResponseEntity create(@RequestBody CardRequest cardRequest) {
         return ResponseEntity.ok(this.cardsService.create(cardRequest));
     }
 
-    @GetMapping(params = "income")
-    public ResponseEntity<List<CardApprovedResponse>> cards(@RequestParam Long income){
+    @GetMapping("income/{income}")
+    public ResponseEntity<List<CardApprovedResponse>> cards(@PathVariable("income") Long income){
         return ResponseEntity.ok(this.cardsService.cards(income));
     }
 
-    @GetMapping(params = "document")
-    public ResponseEntity<List<CardApprovedResponse>> cardsCustomer(@RequestParam String document) {
+    @GetMapping("document/{document}")
+    public ResponseEntity<List<CardApprovedResponse>> cardsCustomer(@PathVariable("document") String document) {
         return ResponseEntity.ok(this.cardCustomerService.cardsCustomerDocument(document));
     }
 }
