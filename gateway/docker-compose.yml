@@ -2,8 +2,8 @@
 version: "3.8"
 services:
   gateway:
-    image: api-gateway
-    container_name: api-gateway
+    image: gateway
+    container_name: gateway
     build: .
     environment:
       EUREKA.CLIENT.SERVICEURL.DEFAULTZONE: http://service-registry:8761/eureka/

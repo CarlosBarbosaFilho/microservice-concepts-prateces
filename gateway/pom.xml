@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>br.com.cbgomes</groupId>
 	<artifactId>gateway</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 	<name>gateway</name>
 	<description>Gateway to project microservices concepts</description>
 	<properties>
@@ -81,6 +81,11 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<image>
+						<name>carlosbarbosafilho/${project.artifactId}:${project.version}</name>
+					</image>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
