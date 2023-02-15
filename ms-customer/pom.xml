@@ -113,16 +113,10 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <repository>carlosbarbosafilho/${project.artifactId}</repository>
+                    <image>
+                        <name>carlosbarbosafilho/${project.artifactId}:${project.version}</name>
+                    </image>
                 </configuration>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>docker-build</goal>
-                            <goal>docker-push</goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
         </plugins>
     </build>
