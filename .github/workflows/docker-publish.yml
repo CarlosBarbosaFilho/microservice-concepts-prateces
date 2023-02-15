@@ -69,6 +69,18 @@ jobs:
       - name: Docker Compose Build - Customer
         working-directory: ./ms-customer
         run: docker-compose build
+      
+      - name: Create Image - Rater Customer
+        working-directory: ./ms-customer-reter-credit
+        run: mvn spring-boot:build-image -DskipTests
+      
+      - name: Create Image - Rater Customer jar
+        working-directory: ./ms-customer-reter-credit
+        run: mvn clean package -DskipTests
+        
+      - name: Docker Compose Build - Rater Customer
+        working-directory: ./ms-customer-reter-credit
+        run: docker-compose build
         
       - name: Push to Docker Hub
         run: |
@@ -80,6 +92,8 @@ jobs:
           docker tag ${{ secrets.DOCKER_USERNAME }}/ms-cards:0.0.1 ${{ secrets.DOCKER_USERNAME }}/ms-cards:latest
           docker tag ${{ secrets.DOCKER_USERNAME }}/ms-customer:0.0.1 ${{ secrets.DOCKER_USERNAME }}/ms-customer:${{github.run_id}}
           docker tag ${{ secrets.DOCKER_USERNAME }}/ms-customer:0.0.1 ${{ secrets.DOCKER_USERNAME }}/ms-customer:latest
+          docker tag ${{ secrets.DOCKER_USERNAME }}/ms-customer-reter-credit:0.0.1 ${{ secrets.DOCKER_USERNAME }}/ms-customer-reter-credit:${{github.run_id}}
+          docker tag ${{ secrets.DOCKER_USERNAME }}/ms-customer-reter-credit:0.0.1 ${{ secrets.DOCKER_USERNAME }}/ms-customer-reter-credit:latest
           docker push ${{ secrets.DOCKER_USERNAME }}/service-discovery:${{github.run_id}}
           docker push ${{ secrets.DOCKER_USERNAME }}/service-discovery:latest
           docker push ${{ secrets.DOCKER_USERNAME }}/gateway:${{github.run_id}}
@@ -88,3 +102,5 @@ jobs:
           docker push ${{ secrets.DOCKER_USERNAME }}/ms-cards:latest
           docker push ${{ secrets.DOCKER_USERNAME }}/ms-customer:${{github.run_id}}
           docker push ${{ secrets.DOCKER_USERNAME }}/ms-customer:latest
+          docker push ${{ secrets.DOCKER_USERNAME }}/ms-customer-reter-credit:${{github.run_id}}
+          docker push ${{ secrets.DOCKER_USERNAME }}/ms-customer-reter-credit:latest
