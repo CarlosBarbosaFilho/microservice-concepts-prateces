@@ -63,7 +63,7 @@ jobs:
         run: mvn spring-boot:build-image -DskipTests
       
       - name: Create Image - Customer jar
-        working-directory: ./ms-cutomer
+        working-directory: ./ms-customer
         run: mvn clean package -DskipTests
         
       - name: Docker Compose Build - Customer
