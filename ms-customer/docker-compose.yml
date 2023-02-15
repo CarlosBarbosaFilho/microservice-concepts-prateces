@@ -7,7 +7,6 @@ services:
     build: .
     environment:
       EUREKA.CLIENT.SERVICEURL.DEFAULTZONE: http://service-registry:8761/eureka/
-    command:
 networks:
   default:
     external:
