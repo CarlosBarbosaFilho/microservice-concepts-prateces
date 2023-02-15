@@ -92,8 +92,8 @@ jobs:
           docker tag ${{ secrets.DOCKER_USERNAME }}/ms-cards:0.0.1 ${{ secrets.DOCKER_USERNAME }}/ms-cards:latest
           docker tag ${{ secrets.DOCKER_USERNAME }}/ms-customer:0.0.1 ${{ secrets.DOCKER_USERNAME }}/ms-customer:${{github.run_id}}
           docker tag ${{ secrets.DOCKER_USERNAME }}/ms-customer:0.0.1 ${{ secrets.DOCKER_USERNAME }}/ms-customer:latest
-          docker tag ${{ secrets.DOCKER_USERNAME }}/ms-customer-reter-credit:0.0.1 ${{ secrets.DOCKER_USERNAME }}/ms-customer-reter-credit:${{github.run_id}}
-          docker tag ${{ secrets.DOCKER_USERNAME }}/ms-customer-reter-credit:0.0.1 ${{ secrets.DOCKER_USERNAME }}/ms-customer-reter-credit:latest
+          docker tag ${{ secrets.DOCKER_USERNAME }}/ms-customer-rater-credit:0.0.1 ${{ secrets.DOCKER_USERNAME }}/ms-customer-rater-credit:${{github.run_id}}
+          docker tag ${{ secrets.DOCKER_USERNAME }}/ms-customer-rater-credit:0.0.1 ${{ secrets.DOCKER_USERNAME }}/ms-customer-rater-credit:latest
           docker push ${{ secrets.DOCKER_USERNAME }}/service-discovery:${{github.run_id}}
           docker push ${{ secrets.DOCKER_USERNAME }}/service-discovery:latest
           docker push ${{ secrets.DOCKER_USERNAME }}/gateway:${{github.run_id}}
@@ -102,5 +102,5 @@ jobs:
           docker push ${{ secrets.DOCKER_USERNAME }}/ms-cards:latest
           docker push ${{ secrets.DOCKER_USERNAME }}/ms-customer:${{github.run_id}}
           docker push ${{ secrets.DOCKER_USERNAME }}/ms-customer:latest
-          docker push ${{ secrets.DOCKER_USERNAME }}/ms-customer-reter-credit:${{github.run_id}}
-          docker push ${{ secrets.DOCKER_USERNAME }}/ms-customer-reter-credit:latest
+          docker push ${{ secrets.DOCKER_USERNAME }}/ms-customer-rater-credit:${{github.run_id}}
+          docker push ${{ secrets.DOCKER_USERNAME }}/ms-customer-rater-credit:latest
