@@ -37,5 +37,7 @@ jobs:
       - name: Push to Docker Hub
         run: |
           docker tag ${{ secrets.DOCKER_USERNAME }}/service-discovery:0.0.1 ${{ secrets.DOCKER_USERNAME }}/service-discovery:${{github.run_id}}
+          docker tag ${{ secrets.DOCKER_USERNAME }}/service-discovery:0.0.1 ${{ secrets.DOCKER_USERNAME }}/service-discovery:latest
           docker push ${{ secrets.DOCKER_USERNAME }}/service-discovery:${{github.run_id}}
+          docker push ${{ secrets.DOCKER_USERNAME }}/service-discovery:latest
       
