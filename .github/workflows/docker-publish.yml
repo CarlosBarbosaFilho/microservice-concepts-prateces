@@ -58,6 +58,18 @@ jobs:
         working-directory: ./ms-cards
         run: docker-compose build
         
+      - name: Create Image - Customer
+        working-directory: ./ms-customer
+        run: mvn spring-boot:build-image -DskipTests
+      
+      - name: Create Image - Customer jar
+        working-directory: ./ms-cutomer
+        run: mvn clean package -DskipTests
+        
+      - name: Docker Compose Build - Customer
+        working-directory: ./ms-customer
+        run: docker-compose build
+        
       - name: Push to Docker Hub
         run: |
           docker tag ${{ secrets.DOCKER_USERNAME }}/service-discovery:0.0.1 ${{ secrets.DOCKER_USERNAME }}/service-discovery:${{github.run_id}}
@@ -66,10 +78,13 @@ jobs:
           docker tag ${{ secrets.DOCKER_USERNAME }}/gateway:0.0.1 ${{ secrets.DOCKER_USERNAME }}/gateway:latest
           docker tag ${{ secrets.DOCKER_USERNAME }}/ms-cards:0.0.1 ${{ secrets.DOCKER_USERNAME }}/ms-cards:${{github.run_id}}
           docker tag ${{ secrets.DOCKER_USERNAME }}/ms-cards:0.0.1 ${{ secrets.DOCKER_USERNAME }}/ms-cards:latest
+          docker tag ${{ secrets.DOCKER_USERNAME }}/ms-customer:0.0.1 ${{ secrets.DOCKER_USERNAME }}/ms-customer:${{github.run_id}}
+          docker tag ${{ secrets.DOCKER_USERNAME }}/ms-customer:0.0.1 ${{ secrets.DOCKER_USERNAME }}/ms-customer:latest
           docker push ${{ secrets.DOCKER_USERNAME }}/service-discovery:${{github.run_id}}
           docker push ${{ secrets.DOCKER_USERNAME }}/service-discovery:latest
           docker push ${{ secrets.DOCKER_USERNAME }}/gateway:${{github.run_id}}
           docker push ${{ secrets.DOCKER_USERNAME }}/gateway:latest
           docker push ${{ secrets.DOCKER_USERNAME }}/ms-cards:${{github.run_id}}
           docker push ${{ secrets.DOCKER_USERNAME }}/ms-cards:latest
-      
+          docker push ${{ secrets.DOCKER_USERNAME }}/ms-customer:${{github.run_id}}
+          docker push ${{ secrets.DOCKER_USERNAME }}/ms-customer:latest
