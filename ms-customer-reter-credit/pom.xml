@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>br.com.cbgomes</groupId>
-    <artifactId>ms-customer-reter-credit</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <name>ms-customer-reter-credit</name>
-    <description>ms-customer-reter-credit</description>
+    <artifactId>ms-customer-rater-credit</artifactId>
+    <version>0.0.1</version>
+    <name>ms-customer-rater-credit</name>
+    <description>ms-customer-rater-credit</description>
     <properties>
         <java.version>17</java.version>
         <spring-cloud.version>2022.0.0</spring-cloud.version>
@@ -120,12 +120,9 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <excludes>
-                        <exclude>
-                            <groupId>org.projectlombok</groupId>
-                            <artifactId>lombok</artifactId>
-                        </exclude>
-                    </excludes>
+                    <image>
+                        <name>carlosbarbosafilho/${project.artifactId}:${project.version}</name>
+                    </image>
                 </configuration>
             </plugin>
         </plugins>
