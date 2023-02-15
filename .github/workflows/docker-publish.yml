@@ -30,14 +30,30 @@ jobs:
         working-directory: ./service-discovery
         run: mvn clean package -DskipTests
         
-      - name: Docker Compose Build
+      - name: Docker Compose Build - Service Discovery
         working-directory: ./service-discovery
+        run: docker-compose build
+        
+      - name: Create Image - Gateway
+        working-directory: ./gateway
+        run: mvn spring-boot:build-image -DskipTests
+      
+      - name: Create Image - Gateway jar
+        working-directory: ./gateway
+        run: mvn clean package -DskipTests
+        
+      - name: Docker Compose Build - Gateway
+        working-directory: ./gateway
         run: docker-compose build
         
       - name: Push to Docker Hub
         run: |
           docker tag ${{ secrets.DOCKER_USERNAME }}/service-discovery:0.0.1 ${{ secrets.DOCKER_USERNAME }}/service-discovery:${{github.run_id}}
           docker tag ${{ secrets.DOCKER_USERNAME }}/service-discovery:0.0.1 ${{ secrets.DOCKER_USERNAME }}/service-discovery:latest
+          docker tag ${{ secrets.DOCKER_USERNAME }}/gateway:0.0.1 ${{ secrets.DOCKER_USERNAME }}/gateway:${{github.run_id}}
+          docker tag ${{ secrets.DOCKER_USERNAME }}/gateway:0.0.1 ${{ secrets.DOCKER_USERNAME }}/gateway:latest
           docker push ${{ secrets.DOCKER_USERNAME }}/service-discovery:${{github.run_id}}
           docker push ${{ secrets.DOCKER_USERNAME }}/service-discovery:latest
+          docker push ${{ secrets.DOCKER_USERNAME }}/gateway:${{github.run_id}}
+          docker push ${{ secrets.DOCKER_USERNAME }}/gateway:latest
       
